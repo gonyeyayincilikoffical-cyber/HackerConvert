@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom CSS Scrollbars & Utilities */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02050d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #112046;
+  border-radius: 99px;
+  border: 1px solid rgba(180, 100, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2F6FED;
+}
+
+@keyframes logoGlow {
+  0% { filter: drop-shadow(0 0 5px rgba(47,111,237,0.4)); }
+  100% { filter: drop-shadow(0 0 25px rgba(255,0,e6,0.8)); }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+.blink-cursor {
+  animation: blink 0.7s step-end infinite;
+}
+
+.glow-magenta {
+  text-shadow: 0 0 12px rgba(255, 0, 230, 0.8);
+}
+
+.glow-mint {
+  text-shadow: 0 0 12px rgba(0, 242, 254, 0.8);
+}
+
+.grid-mask {
+  mask-image: radial-gradient(circle, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
+}
+
+/* Themes custom variables mapped */
+.theme-matrix {
+  --color-primary: #2563eb;
+  --color-accent: #6366f1;
+  --color-accent-two: #3b82f6;
+  --color-bg: #0f172a;
+  --color-bg-deep: #020617;
+  --color-surface: rgba(30, 41, 59, 0.35);
+  --color-line: rgba(51, 65, 85, 0.5);
+}
+
+.theme-synthwave {
+  --color-primary: #8a2be2;
+  --color-accent: #ff007f;
+  --color-accent-two: #00ffff;
+  --color-bg: #0d001a;
+  --color-bg-deep: #05000a;
+  --color-surface: rgba(30, 0, 54, 0.35);
+  --color-line: rgba(255, 0, 127, 0.25);
+}
+
+.theme-cyberpunk {
+  --color-primary: #ffb700;
+  --color-accent: #ff0055;
+  --color-accent-two: #00ffaa;
+  --color-bg: #0e0c02;
+  --color-bg-deep: #050400;
+  --color-surface: rgba(45, 36, 0, 0.35);
+  --color-line: rgba(255, 183, 0, 0.3);
+}
+
+.theme-glacier {
+  --color-primary: #0099ff;
+  --color-accent: #00f2fe;
+  --color-accent-two: #a8ffb2;
+  --color-bg: #020d14;
+  --color-bg-deep: #010508;
+  --color-surface: rgba(11, 34, 46, 0.35);
+  --color-line: rgba(0, 242, 254, 0.25);
+}

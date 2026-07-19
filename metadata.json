@@ -1,0 +1,6 @@
+{
+  "name": "HACkerConvert",
+  "description": "Secure, browser-based file conversion utility with instant client-side format transformation, digital audio effects, and customizable hacker-inspired visual themes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
