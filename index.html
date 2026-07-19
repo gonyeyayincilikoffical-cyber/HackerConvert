@@ -8,19 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #050b1a; /* Daha derin siberpunk gecesi */
+    --bg: #050b1a; 
     --bg-deep: #02050d;
     --surface: #0a142c;
     --surface-soft: #112046;
-    --line: rgba(180, 100, 255, 0.15); /* Hafif mor ışıltılı çizgiler */
+    --line: rgba(180, 100, 255, 0.15); 
     --primary: #2F6FED;
     --primary-light: #5B9BFF;
     --primary-dim: #1A4FC4;
     --text: #FFFFFF;
     --muted: #A9BEDD;
     --muted-dim: #7288AC;
-    --accent-mint: #00f2fe; /* Neon Cyan */
-    --accent-magenta: #ff00e6; /* Neon Magenta */
+    --accent-mint: #00f2fe; 
+    --accent-magenta: #ff00e6; 
     --radius: 16px;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -43,20 +43,18 @@
   h1,h2,h3{font-family:'Space Grotesk', sans-serif; letter-spacing:-0.02em;}
   .mono{font-family:'JetBrains Mono', monospace;}
 
-  /* ---------- Matrix Arka Plan Canvas ---------- */
   #matrixCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* İçeriklerin arkasında kalması için */
-    pointer-events: none; /* Sitedeki tıklamaları engellemesin */
-    opacity: 0.35; /* İçerikleri okumayı zorlaştırmayacak hafif saydamlık */
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.35;
     transition: opacity 0.5s ease;
   }
 
-  /* ---------- Intro & Splash Screen ---------- */
   #intro-overlay {
     position: fixed; inset: 0; background: #02050d;
     display: flex; align-items: center; justify-content: center;
@@ -80,7 +78,6 @@
   @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--accent-mint); } }
   #intro-overlay.fade-out { opacity: 0; visibility: hidden; }
 
-  /* ---------- Header & Language ---------- */
   header{
     position: sticky; top:0; z-index: 50;
     background: rgba(5,11,26,0.8);
@@ -127,7 +124,6 @@
   .btn:disabled{opacity:.5; cursor:not-allowed; transform:none; box-shadow: none;}
   @media (max-width: 860px){ .nav-links{display:none;} }
 
-  /* ---------- Giriş Penceresi (Modal) ---------- */
   .modal-overlay {
     position: fixed; inset: 0; background: rgba(2, 5, 13, 0.85);
     backdrop-filter: blur(8px); display: none; align-items: center;
@@ -156,13 +152,11 @@
   .remember-group input { cursor: pointer; width: 16px; height: 16px; accent-color: var(--accent-magenta); }
   .modal-submit { width: 100%; padding: 12px; font-size: 15px; margin-top: 10px; }
 
-  /* ---------- Hero & Widget ---------- */
   .hero{
     padding: 76px 0 40px;
     position: relative;
     overflow: hidden;
   }
-  /* Grid arka planı Matrix ile çakışmaması için yumuşatıldı */
   .hero::before {
     content: '';
     position: absolute;
@@ -249,7 +243,6 @@
   .result-box .rtext b{color: var(--accent-mint);}
   .disclaimer{font-size:11px; color:var(--muted-dim); margin-top:14px; text-align:center; line-height:1.5;}
 
-  /* ---------- Categories ---------- */
   .section-head{max-width:560px; margin-bottom: 44px;}
   .section-head .eyebrow{margin-bottom:16px;}
   .section-head h2{font-size:32px; margin-bottom:12px;}
@@ -283,7 +276,6 @@
   @media (max-width: 900px){ .cat-grid{grid-template-columns: repeat(2,1fr);} }
   @media (max-width: 600px){ .cat-grid{grid-template-columns: 1fr; } .hero-grid{grid-template-columns:1fr;} }
 
-  /* ---------- How it works ---------- */
   .how{padding: 100px 0;}
   .steps{display:grid; grid-template-columns: repeat(3,1fr); gap:0; position:relative;}
   .step{position:relative; padding: 0 22px;}
@@ -302,7 +294,6 @@
   .step p{font-size:13.5px; color:var(--muted);}
   @media (max-width: 800px){ .steps{grid-template-columns:1fr; gap:36px;} .step:not(:last-child)::after{display:none;} }
 
-  /* ---------- CTA ---------- */
   .cta{padding: 40px 0 110px;}
   .cta-box{
     background: linear-gradient(135deg, var(--primary-dim), var(--surface));
@@ -317,7 +308,6 @@
   .cta-box h2{font-size:30px; margin-bottom:14px; position:relative;}
   .cta-box p{color:var(--muted); margin-bottom:26px; position:relative;}
   
-  /* ---------- Footer ---------- */
   footer{border-top:1px solid var(--line); padding: 46px 0 30px;}
   .foot-grid{display:grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; margin-bottom:36px;}
   .foot-brand p{color:var(--muted-dim); font-size:13px; margin-top:14px; max-width:260px;}
@@ -434,6 +424,9 @@
       </div>
 
       <button class="btn btn-primary convert-btn" id="convertBtn" disabled data-key="btn_convert">Dönüştür</button>
+      <div id="shortcutTip" style="font-size: 11px; color: var(--muted-dim); margin-top: 8px; text-align: center; opacity: 0; transition: opacity 0.3s;">
+        ⚡ Hızlıca başlatmak için <b>Ctrl + Enter</b> (veya <b>Cmd + Enter</b>) kullanabilirsin.
+      </div>
 
       <div class="progress-wrap" id="progressWrap">
         <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
@@ -556,7 +549,7 @@
 </footer>
 
 <script>
-  // ---------- DİL DOSYALARI ----------
+ // ---------- DİL DOSYALARI (GÜNCELLENMİŞ) ----------
   const translations = {
     tr: {
       title: "HACkerConvert — Her formatı, tek yerden dönüştür",
@@ -664,7 +657,6 @@
     }
   };
 
-  // ---------- MATRIX RAIN (KOD YAĞMURU) ----------
   const canvas = document.getElementById('matrixCanvas');
   const ctx = canvas.getContext('2d');
   const matrixToggleBtn = document.getElementById('matrixToggleBtn');
@@ -672,7 +664,6 @@
   let matrixInterval = null;
   let isMatrixActive = true;
 
-  // Harf ve siber karakter kütüphanesi
   const katakana = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ#$@%&*";
   const alphabet = katakana.split("");
 
@@ -687,22 +678,18 @@
     
     rainDrops = [];
     for (let x = 0; x < columns; x++) {
-      rainDrops[x] = Math.random() * -100; // Akışın doğal başlaması için yukarıya dağıtıyoruz
+      rainDrops[x] = Math.random() * -100;
     }
   }
 
   function drawMatrix() {
-    // Arka planı hafif saydam siyahla kaplayarak kuyruklu akış etkisi veriyoruz
     ctx.fillStyle = 'rgba(5, 11, 26, 0.08)'; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let i = 0; i < rainDrops.length; i++) {
       const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-      
-      // Siberpunk temamıza uyumlu mor ve cyan tonlarını rastgele dağıtıyoruz
       ctx.fillStyle = Math.random() > 0.5 ? '#ff00e6' : '#00f2fe';
       ctx.font = fontSize + 'px monospace';
-      
       ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
 
       if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -714,7 +701,7 @@
 
   function startMatrix() {
     initMatrix();
-    matrixInterval = setInterval(drawMatrix, 33); // Yaklaşık 30 FPS akıcı hız
+    matrixInterval = setInterval(drawMatrix, 33);
   }
 
   function stopMatrix() {
@@ -722,7 +709,6 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  // Matrix Aç/Kapa Buton Kontrolü
   if (matrixToggleBtn) {
     matrixToggleBtn.addEventListener('click', () => {
       isMatrixActive = !isMatrixActive;
@@ -737,15 +723,12 @@
     });
   }
 
-  // Ekran boyutu değiştiğinde gridleri güncelle
   window.addEventListener('resize', () => {
     if (isMatrixActive) {
       initMatrix();
     }
   });
 
-
-  // ---------- SES EFEKTLERİ (WEB AUDIO API) ----------
   let isMuted = false;
   const muteBtn = document.getElementById('muteBtn');
 
@@ -753,7 +736,7 @@
     muteBtn.addEventListener('click', () => {
       isMuted = !isMuted;
       muteBtn.textContent = isMuted ? '🔇' : '🔊';
-      playClickSound(); // Geri bildirim sesi
+      playClickSound();
     });
   }
 
@@ -764,10 +747,10 @@
       const oscillator = audioCtx.createOscillator();
       const gainNode = audioCtx.createGain();
 
-      oscillator.type = type; // 'sine', 'square', 'sawtooth', 'triangle'
+      oscillator.type = type;
       oscillator.frequency.value = freq;
 
-      gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime); // Ses seviyesi (Hafif bir klik)
+      gainNode.gain.setValueAtTime(0.04, audioCtx.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + duration);
 
       oscillator.connect(gainNode);
@@ -780,33 +763,19 @@
     }
   }
 
-  // Klik sesi (Buton etkileşimleri)
-  function playClickSound() {
-    playSynthSound(800, 'sine', 0.08);
-  }
-
-  // Başarı bipi (Dönüşüm tamamlandığında)
+  function playClickSound() { playSynthSound(800, 'sine', 0.08); }
   function playSuccessSound() {
-    playSynthSound(523.25, 'square', 0.15); // Do
-    setTimeout(() => {
-      playSynthSound(659.25, 'square', 0.25); // Mi
-    }, 120);
+    playSynthSound(523.25, 'square', 0.15);
+    setTimeout(() => { playSynthSound(659.25, 'square', 0.25); }, 120);
   }
+  function playUploadSound() { playSynthSound(320, 'triangle', 0.15); }
 
-  // Dosya yükleme / sürükleme sesi
-  function playUploadSound() {
-    playSynthSound(320, 'triangle', 0.15);
-  }
-
-
-  // ---------- AD SİMÜLASYONU VE LOGO INTRO ----------
   document.addEventListener('DOMContentLoaded', () => {
     const introText = document.getElementById('intro-text');
     const introOverlay = document.getElementById('intro-overlay');
     const siteName = "HACkerConvert.";
     let index = 0;
 
-    // Matrix yağmurunu başlat
     startMatrix();
 
     function typeEffect() {
@@ -815,77 +784,46 @@
         index++;
         setTimeout(typeEffect, 100); 
       } else {
-        setTimeout(() => {
-          introOverlay.classList.add('fade-out');
-        }, 800); 
+        setTimeout(() => { introOverlay.classList.add('fade-out'); }, 800); 
       }
     }
     setTimeout(typeEffect, 400); 
 
-    // Event Dinleyicilerini Seslere Bağlama
     document.querySelectorAll('.btn, .modal-close, select, .dropzone, #langSelector').forEach(element => {
       element.addEventListener('click', playClickSound);
     });
   });
 
-  // ---------- LANG CHANGER ----------
   function changeLanguage(lang) {
     if(!translations[lang]) return;
-    
-    if(lang === 'ar') {
-      document.body.classList.add('rtl');
-    } else {
-      document.body.classList.remove('rtl');
-    }
+    if(lang === 'ar') document.body.classList.add('rtl'); else document.body.classList.remove('rtl');
 
     const dict = translations[lang];
     document.getElementById('pageTitle').textContent = dict.title;
     document.getElementById('heroTitle').innerHTML = dict.hero_title;
-    
-    // Set Input Placeholders dynamically
     document.getElementById('usrName').placeholder = dict.placeholder_name;
     document.getElementById('usrNick').placeholder = dict.placeholder_nick;
 
-    // Translate data-keys
     document.querySelectorAll('[data-key]').forEach(el => {
       const key = el.getAttribute('data-key');
-      if (dict[key]) {
-        el.innerHTML = dict[key];
-      }
+      if (dict[key]) el.innerHTML = dict[key];
     });
   }
 
-  // ---------- MODAL OPERATIONS ----------
   const loginBtn = document.getElementById('customLoginBtn');
   const loginModal = document.getElementById('loginModal');
   const closeModalBtn = document.getElementById('closeModalBtn');
   const submitLoginBtn = document.getElementById('submitLoginBtn');
   const usrNameInput = document.getElementById('usrName');
 
-  loginBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    loginModal.classList.add('show');
-  });
-
-  closeModalBtn.addEventListener('click', () => {
-    loginModal.classList.remove('show');
-  });
-
-  window.addEventListener('click', (e) => {
-    if(e.target === loginModal) {
-      loginModal.classList.remove('show');
-    }
-  });
-
+  loginBtn.addEventListener('click', (e) => { e.preventDefault(); loginModal.classList.add('show'); });
+  closeModalBtn.addEventListener('click', () => { loginModal.classList.remove('show'); });
+  window.addEventListener('click', (e) => { if(e.target === loginModal) loginModal.classList.remove('show'); });
   submitLoginBtn.addEventListener('click', () => {
     const val = usrNameInput.value.trim();
-    if(val) {
-      loginBtn.textContent = val;
-      loginModal.classList.remove('show');
-    }
+    if(val) { loginBtn.textContent = val; loginModal.classList.remove('show'); }
   });
 
-  // ---------- DRAG & DROP / FILE OPERATIONS ----------
   const dropzone = document.getElementById('dropzone');
   const fileInput = document.getElementById('fileInput');
   const fileChip = document.getElementById('fileChip');
@@ -898,38 +836,21 @@
   const resultName = document.getElementById('resultName');
   const downloadBtn = document.getElementById('downloadBtn');
   const stepLabel = document.getElementById('stepLabel');
+  const shortcutTip = document.getElementById('shortcutTip');
 
   let activeFile = null;
 
   dropzone.addEventListener('click', () => fileInput.click());
-  
-  dropzone.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    dropzone.classList.add('drag');
-  });
-
-  dropzone.addEventListener('dragleave', () => {
-    dropzone.classList.remove('drag');
-  });
-
-  dropzone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    dropzone.classList.remove('drag');
-    if (e.dataTransfer.files.length > 0) {
-      handleFile(e.dataTransfer.files[0]);
-    }
-  });
-
-  fileInput.addEventListener('change', (e) => {
-    if (e.target.files.length > 0) {
-      handleFile(e.target.files[0]);
-    }
-  });
+  dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag'); });
+  dropzone.addEventListener('dragleave', () => { dropzone.classList.remove('drag'); });
+  dropzone.addEventListener('drop', (e) => { e.preventDefault(); dropzone.classList.remove('drag'); if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]); });
+  fileInput.addEventListener('change', (e) => { if (e.target.files.length > 0) handleFile(e.target.files[0]); });
 
   function handleFile(file) {
-    playUploadSound(); // Dosya yüklendiğinde ses çıkar
+    playUploadSound();
     activeFile = file;
     dropzone.style.display = 'none';
+    shortcutTip.style.opacity = '1';
     
     const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
     fileChip.innerHTML = `
@@ -943,23 +864,14 @@
       </div>
     `;
 
-    // Yeni silme butonuna tıklayınca klik sesi çalmasını sağla
-    document.getElementById('btn_remove_file').addEventListener('click', () => {
-      playClickSound();
-      resetConverter();
-    });
+    document.getElementById('btn_remove_file').addEventListener('click', () => { playClickSound(); resetConverter(); });
 
     const ext = file.name.split('.').pop().toLowerCase();
     targetFormat.innerHTML = '';
-    
     let formats = ['PDF', 'ZIP'];
-    if (['png', 'jpg', 'jpeg', 'webp'].includes(ext)) {
-      formats = ['WEBP', 'PNG', 'JPG'];
-    } else if (['csv', 'json', 'xlsx'].includes(ext)) {
-      formats = ['CSV', 'JSON', 'XLSX'];
-    } else if (['docx', 'pdf', 'txt'].includes(ext)) {
-      formats = ['PDF', 'TXT', 'DOCX'];
-    }
+    if (['png', 'jpg', 'jpeg', 'webp'].includes(ext)) formats = ['WEBP', 'PNG', 'JPG'];
+    else if (['csv', 'json', 'xlsx'].includes(ext)) formats = ['CSV', 'JSON', 'XLSX'];
+    else if (['docx', 'pdf', 'txt'].includes(ext)) formats = ['PDF', 'TXT', 'DOCX'];
 
     formats.forEach(f => {
       if(f.toLowerCase() !== ext) {
@@ -983,24 +895,20 @@
     progressWrap.classList.remove('show');
     resultBox.classList.remove('show');
     stepLabel.textContent = "adım 1/2";
+    shortcutTip.style.opacity = '0';
   }
 
- // ---------- KLAVYE KISAYOLLARI (Ctrl/Cmd + Enter) ----------
-document.addEventListener('keydown', (e) => {
-  // Hem Windows (Ctrl) hem de macOS (Cmd/Meta) desteği
-  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-    if (!convertBtn.disabled) {
-      e.preventDefault();
-      convertBtn.click();
-      console.log("Klavye kısayolu ile dönüştürme başlatıldı.");
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      if (!convertBtn.disabled) {
+        e.preventDefault();
+        convertBtn.click();
+      }
     }
-  }
-});
+  });
 
-// ---------- CONVERSION SIMULATOR ----------
   convertBtn.addEventListener('click', () => {
     if(!activeFile) return;
-    
     convertBtn.setAttribute('disabled', 'true');
     progressWrap.classList.add('show');
     progressFill.style.width = '0%';
@@ -1011,20 +919,16 @@ document.addEventListener('keydown', (e) => {
       pct += 10;
       progressFill.style.width = pct + '%';
       progressPct.textContent = pct + '%';
-
       if(pct >= 100) {
         clearInterval(interval);
-        playSuccessSound(); // Dönüşüm bittiğinde başarı sesi çal
+        playSuccessSound();
         setTimeout(() => {
           progressWrap.classList.remove('show');
-          
           const outExt = targetFormat.value;
           const baseName = activeFile.name.substring(0, activeFile.name.lastIndexOf('.'));
           const outName = `${baseName}_converted.${outExt}`;
-          
           resultName.textContent = outName;
           resultBox.classList.add('show');
-          
           const mockBlob = new Blob(["HACkerConvert processed file"], {type: "text/plain"});
           downloadBtn.href = URL.createObjectURL(mockBlob);
           downloadBtn.setAttribute('download', outName);
