@@ -985,7 +985,19 @@
     stepLabel.textContent = "adım 1/2";
   }
 
-  // ---------- CONVERSION SIMULATOR ----------
+ // ---------- KLAVYE KISAYOLLARI (Ctrl/Cmd + Enter) ----------
+document.addEventListener('keydown', (e) => {
+  // Hem Windows (Ctrl) hem de macOS (Cmd/Meta) desteği
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    if (!convertBtn.disabled) {
+      e.preventDefault();
+      convertBtn.click();
+      console.log("Klavye kısayolu ile dönüştürme başlatıldı.");
+    }
+  }
+});
+
+// ---------- CONVERSION SIMULATOR ----------
   convertBtn.addEventListener('click', () => {
     if(!activeFile) return;
     
